@@ -14,9 +14,8 @@ class CreateGenresTable extends Migration
     public function up()
     {
         Schema::create('genres', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('genre_type');
-            $table->integer('film_id');
             $table->timestamps();
         });
     }

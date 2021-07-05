@@ -14,8 +14,12 @@ class CreateFilmsTable extends Migration
     public function up()
     {
         Schema::create('films', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('description');
+            $table->unsignedBigInteger('genre_id')->nullable();
             $table->timestamps();
+            $table->foreignId('genre_id')->constrained();
         });
     }
 
