@@ -18,9 +18,19 @@ class Film extends Model
         'name',
         'description',
          'genre_id',
+         'quantity',
+          'price',
     ];
 
     public function genre(){
         return $this->belongsTo(Genre::class, 'genre_id','id');
     }
+
+    /**
+ * @return \Illuminate\Database\Eloquent\Relations\HasMany
+ */
+     public function images(){
+    return $this->hasMany(FilmImage::class);
+    }
+
 }

@@ -8,6 +8,12 @@ use App\Models\Genre;
 
 class FilmController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:ROLE_ADMIN');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -50,6 +56,8 @@ class FilmController extends Controller
             'name' => 'required',
             'description' => 'reqiured',
             'genre_name' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
         ]);
 
         $film = new Film();
@@ -59,6 +67,9 @@ class FilmController extends Controller
 
         $film->name = $request->get('name');
         $film->genre_id = $request->get('genre_name');
+        $film->description = $request->get('description');
+        $film->quantity = $request->get('name');
+        $film->price = $request->get('price');
 
         $film->save();
 
@@ -103,6 +114,8 @@ class FilmController extends Controller
             'name' => 'required',
             'description' => 'reqiured',
             'genre_name' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
         ]);
 
         $film = Film::find($request->input('id'));
@@ -113,6 +126,8 @@ class FilmController extends Controller
         $film->name = $request->get('name');
         $film->genre_id = $request->get('genre_name');
         $film->description = $request->get('description');
+        $film->quantity = $request->get('name');
+        $film->price = $request->get('price');
 
 
 

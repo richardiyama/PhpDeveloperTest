@@ -7,6 +7,14 @@ use App\Models\Genre;
 
 class GenreController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:ROLE_ADMIN');
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
