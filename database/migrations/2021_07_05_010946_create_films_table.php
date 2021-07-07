@@ -19,7 +19,7 @@ class CreateFilmsTable extends Migration
             $table->string('description');
             $table->unsignedInteger('quantity');
             $table->decimal('price', 8, 2)->nullable();
-            $table->unsignedBigInteger('genre_id')->nullable();
+            //$table->unsignedBigInteger('genre_id')->nullable();
             $table->timestamps();
             $table->foreignId('genre_id')->constrained();
         });

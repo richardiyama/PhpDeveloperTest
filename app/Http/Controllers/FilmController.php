@@ -85,7 +85,10 @@ class FilmController extends Controller
     public function show($id)
     {
         //
-        return view('films.show',compact('film'));
+        $film = film::find($id);
+        
+       
+        return view('films.show',compact('$film'));
     }
 
     /**

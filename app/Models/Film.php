@@ -9,6 +9,11 @@ class Film extends Model
 {
     use HasFactory;
 
+ /**
+     * @var string
+     */
+    protected $table = 'films';
+
     /**
      * The attributes that are mass assignable.
      *

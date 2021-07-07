@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Genre extends Model
 {
     use HasFactory;
+
+     /**
+     * @var string
+     */
+    protected $table = 'genres';
 /**
      * The attributes that are mass assignable.
      *
