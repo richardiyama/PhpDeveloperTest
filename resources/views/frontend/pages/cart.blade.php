@@ -1,4 +1,4 @@
-@extends('frontend.app')
+@extends('site.app')
 @section('title', 'Shopping Cart')
 @section('content')
     <section class="section-pagetop bg-dark">

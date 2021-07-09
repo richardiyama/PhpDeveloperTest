@@ -1,4 +1,4 @@
-@extends('frontend.app')
+@extends('site.app')
 @section('title', 'Homepage')
 @section('content')
     <div class="container">

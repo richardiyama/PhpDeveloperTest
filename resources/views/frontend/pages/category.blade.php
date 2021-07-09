@@ -1,4 +1,4 @@
-@extends('frontend.app')
+@extends('site.app')
 @section('title', $genre->genre_type)
 @section('content')
 <section class="section-pagetop bg-dark">
@@ -10,34 +10,34 @@
     <div class="container">
         <div id="code_prod_complex">
             <div class="row">
-                @forelse($genre->films as $film)
+                @forelse($genre->films as $product)
                     <div class="col-md-4">
                         <figure class="card card-product">
-                            @if ($film->images->count() > 0)
-                                <div class="img-wrap padding-y"><img src="{{ asset('storage/'.$film->images->first()->full) }}" alt=""></div>
+                            @if ($product->images->count() > 0)
+                                <div class="img-wrap padding-y"><img src="{{ asset('storage/'.$product->images->first()->full) }}" alt=""></div>
                             @else
                                 <div class="img-wrap padding-y"><img src="https://via.placeholder.com/176" alt=""></div>
                             @endif
                             <figcaption class="info-wrap">
-                                <h4 class="title"><a href="{{ route('film.show', $film->name) }}">{{ $film->name }}</a></h4>
+                                <h4 class="title"><a href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a></h4>
                             </figcaption>
                             <div class="bottom-wrap">
-                                <a href="" class="btn btn-sm btn-success float-right"><i class="fa fa-cart-arrow-down"></i> Buy Now</a>
-                                @if ($film->sale_price != 0)
+                                <a href="{{ route('product.show', $product->slug) }}" class="btn btn-sm btn-success float-right">View Details</a>
+                                @if ($product->sale_price != 0)
                                     <div class="price-wrap h5">
-                                        <span class="price"> $genre->sale_price }} </span>
-                                        <del class="price-old"> $genre->price }}</del>
+                                        <span class="price"> {{ config('settings.currency_symbol').$product->sale_price }} </span>
+                                        <del class="price-old"> {{ config('settings.currency_symbol').$product->price }}</del>
                                     </div>
                                 @else
                                     <div class="price-wrap h5">
-                                        <span class="price"> {{ config('settings.currency_symbol').$product->price }} </span>
+                                        <span class="price">$product->price }} </span>
                                     </div>
                                 @endif
                             </div>
                         </figure>
                     </div>
                 @empty
-                    <p>No Products found in {{ $category->name }}.</p>
+                    <p>No Products found in {{ $genre->genre_type }}.</p>
                 @endforelse
             </div>
         </div>

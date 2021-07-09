@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.app')
 @section('content')
 
     <div class="row">
@@ -7,7 +7,7 @@
                 <h2> Show Genre</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('genres.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('admin.genres.index') }}"> Back</a>
             </div>
         </div>
     </div>

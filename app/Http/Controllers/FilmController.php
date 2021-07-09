@@ -10,8 +10,7 @@ class FilmController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('role:ROLE_ADMIN');
+      //
     }
     
     /**
@@ -23,7 +22,7 @@ class FilmController extends Controller
     {
         //
         $films = Film::all();
-        return view('films.index',compact('films'));
+        return view('admin.films.index',compact('films'));
     }
 
     /**
@@ -36,7 +35,7 @@ class FilmController extends Controller
         //
 
         $genres = Genre::all();
-        return view('films.create')->with([
+        return view('admin.films.create')->with([
             'genres'  => $genres
             
    
@@ -73,7 +72,7 @@ class FilmController extends Controller
 
         $film->save();
 
-        return redirect()->route('films.index')->with('success','Film created successfully.');
+        return redirect()->route('admin.films.index')->with('success','Film created successfully.');
     }
 
     /**
@@ -85,10 +84,10 @@ class FilmController extends Controller
     public function show($id)
     {
         //
-        $film = film::find($id);
+        $film = Film::find($id);
         
        
-        return view('films.show',compact('$film'));
+        return view('admin.films.show',compact('$film'));
     }
 
     /**
@@ -100,7 +99,7 @@ class FilmController extends Controller
     public function edit($id)
     {
         //
-        return view('films.edit', compact('film'));
+        return view('admin.films.edit', compact('film'));
     }
 
     /**
@@ -139,7 +138,7 @@ class FilmController extends Controller
 
         $film->save();
 
-        return redirect()->route('films.index')->with('success','Film updated successfully');
+        return redirect()->route('admin.films.index')->with('success','Film updated successfully');
 
     }
 
@@ -153,6 +152,6 @@ class FilmController extends Controller
     {
         //
         $film->delete();
-        return redirect()->route('films.index')->with('success','film deleted successfully');
+        return redirect()->route('admin.films.index')->with('success','film deleted successfully');
     }
 }

@@ -10,8 +10,7 @@ class GenreController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('role:ROLE_ADMIN');
+       //
     }
 
     
@@ -24,7 +23,7 @@ class GenreController extends Controller
     {
         $genres = Genre::all();
 
-        return view('genres.index', compact('genres'));
+        return view('admin.genres.index', compact('genres'));
     }
 
     /**
@@ -34,7 +33,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-       return view('genres.create');
+       return view('admin.genres.create');
     }
 
     /**
@@ -52,7 +51,7 @@ class GenreController extends Controller
 
         Genre::create($request->all());
 
-        return redirect()->route('genres.index')->with('success','Genre created successfully.');
+        return redirect()->route('admin.genres.index')->with('success','Genre created successfully.');
     }
 
     /**
@@ -65,7 +64,7 @@ class GenreController extends Controller
     {
       
       $genre = Genre::find($id);  
-      return view('genres.show',compact('genre'));
+      return view('admin.genres.show',compact('genre'));
     }
 
     /**
@@ -76,7 +75,7 @@ class GenreController extends Controller
      */
     public function edit(Genre $genre)
     {
-        return view('genres.edit',compact('genre'));
+        return view('admin.genres.edit',compact('genre'));
     }
 
     /**
@@ -94,7 +93,7 @@ class GenreController extends Controller
 
         $genre->update($request->all());
 
-        return redirect()->route('genres.index')->with('success','Genre updated successfully');
+        return redirect()->route('admin.genres.index')->with('success','Genre updated successfully');
     }
 
     /**
@@ -107,7 +106,7 @@ class GenreController extends Controller
     {
       $genre->delete();
 
-       return redirect()->route('genres.index')
+       return redirect()->route('admin.genres.index')
                        ->with('success','genre deleted successfully');
     }
 }

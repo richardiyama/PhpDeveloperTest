@@ -3,4 +3,3 @@
 <script src="{{ asset('assets/plugins/fancybox/fancybox.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/plugins/owlcarousel/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('assets/js/script.js') }}" type="text/javascript"></script>
-@stack('scripts')
