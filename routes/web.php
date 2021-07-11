@@ -12,21 +12,21 @@
 */
 
 Route::view('/', 'frontend.pages.homepage');
-Route::get('/category/{id}', 'GenreController@show')->name('genre.show');
-Route::get('/product/{id}', 'FilmController@show')->name('film.show');
+Route::get('/genre/{slug}', 'Frontend\GenreController@show')->name('genre.show');
+Route::get('/film/{slug}', 'Frontend\FilmController@show')->name('film.show');
 
-Route::post('/product/add/cart', 'FilmController@addToCart')->name('film.add.cart');
-Route::get('/cart', 'CartController@getCart')->name('checkout.cart');
-Route::get('/cart/item/{id}/remove', 'CartController@removeItem')->name('checkout.cart.remove');
-Route::get('/cart/clear', 'CartController@clearCart')->name('checkout.cart.clear');
+Route::post('/film/add/cart', 'Frontend\FilmController@addToCart')->name('film.add.cart');
+Route::get('/cart', 'Frontend\CartController@getCart')->name('checkout.cart');
+Route::get('/cart/item/{id}/remove', 'Frontend\CartController@removeItem')->name('checkout.cart.remove');
+Route::get('/cart/clear', 'Frontend\CartController@clearCart')->name('checkout.cart.clear');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/checkout', 'CheckoutController@getCheckout')->name('checkout.index');
-    Route::post('/checkout/order', 'CheckoutController@placeOrder')->name('checkout.place.order');
+    Route::get('/checkout', 'Frontend\CheckoutController@getCheckout')->name('checkout.index');
+    Route::post('/checkout/order', 'Frontend\CheckoutController@placeOrder')->name('checkout.place.order');
 
-    Route::get('checkout/payment/complete', 'CheckoutController@complete')->name('checkout.payment.complete');
+    Route::get('checkout/payment/complete', 'Frontend\CheckoutController@complete')->name('checkout.payment.complete');
 
-    Route::get('account/orders', 'AccountController@getOrders')->name('account.orders');
+    Route::get('account/orders', 'Frontend\AccountController@getOrders')->name('account.orders');
 });
 
 Auth::routes();

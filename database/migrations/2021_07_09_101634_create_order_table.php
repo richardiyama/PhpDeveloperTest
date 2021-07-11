@@ -16,8 +16,9 @@ class CreateOrderTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('order_number')->unique();
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')
+          ->constrained()
+          ->onDelete('cascade');
 
             $table->enum('status', ['pending', 'processing', 'completed', 'decline'])->default('pending');
             $table->decimal('grand_total', 20, 6);
@@ -34,6 +35,8 @@ class CreateOrderTable extends Migration
             $table->string('post_code');
             $table->string('phone_number');
             $table->text('notes')->nullable();
+
+            $table->timestamps();
         });
     }
 

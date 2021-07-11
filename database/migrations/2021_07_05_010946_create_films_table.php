@@ -15,14 +15,22 @@ class CreateFilmsTable extends Migration
     {
         Schema::create('films', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('sku');
             $table->string('name');
-            $table->string('description');
+            $table->string('slug');
+            $table->text('description')->nullable();
             $table->unsignedInteger('quantity');
             $table->decimal('price', 8, 2)->nullable();
-            //$table->unsignedBigInteger('genre_id')->nullable();
-            $table->timestamps();
-            $table->foreignId('genre_id')->constrained();
+            $table->decimal('sale_price', 8, 2)->nullable();
+            $table->boolean('status')->default(1);
+            $table->boolean('featured')->default(0);
+
+            $table->foreignId('brand_id')
+            ->constrained()
+            ->onDelete('cascade');
         });
+
+        
     }
 
     /**

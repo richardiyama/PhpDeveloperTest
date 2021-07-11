@@ -1,10 +1,10 @@
 @extends('admin.app')
-@section('title') Orders @endsection
+@section('title') {{ $pageTitle }} @endsection
 @section('content')
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-bar-chart"></i> Orders</h1>
-        
+            <h1><i class="fa fa-bar-chart"></i> {{ $pageTitle }}</h1>
+            <p>{{ $subTitle }}</p>
         </div>
     </div>
     <div class="row">
@@ -27,8 +27,8 @@
                         @foreach($orders as $order)
                             <tr>
                                 <td>{{ $order->order_number }}</td>
-                                <td>{{ $order->user->name }}</td>
-                                <td class="text-center">{{ $order->grand_total }}</td>
+                                <td>{{ $order->user->fullName }}</td>
+                                <td class="text-center">{{ config('settings.currency_symbol') }}{{ $order->grand_total }}</td>
                                 <td class="text-center">{{ $order->item_count }}</td>
                                 <td class="text-center">
                                     @if ($order->payment_status == 1)

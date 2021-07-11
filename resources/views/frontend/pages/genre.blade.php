@@ -30,14 +30,14 @@
                                     </div>
                                 @else
                                     <div class="price-wrap h5">
-                                        <span class="price"> {{ config('settings.currency_symbol').$product->price }} </span>
+                                        <span class="price"> {{ config('settings.currency_symbol').$film->price }} </span>
                                     </div>
                                 @endif
                             </div>
                         </figure>
                     </div>
                 @empty
-                    <p>No Products found in {{ $category->name }}.</p>
+                    <p>No Films found in {{ $genre->name }}.</p>
                 @endforelse
             </div>
         </div>

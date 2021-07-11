@@ -16,8 +16,7 @@ class Film extends Model
      * @var array
      */
     protected $fillable = [
-        'brand_id', 'sku', 'name', 'slug', 'description', 'quantity',
-        'weight', 'price', 'sale_price', 'status', 'featured',
+        'brand_id', 'sku', 'name', 'slug', 'description', 'quantity', 'price', 'sale_price', 'status', 'featured',
     ];
 
     /**

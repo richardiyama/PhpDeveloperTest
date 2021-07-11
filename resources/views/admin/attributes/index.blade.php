@@ -3,10 +3,10 @@
 @section('content')
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-shopping-bag"></i> {{ $pageTitle }}</h1>
+            <h1><i class="fa fa-tags"></i> {{ $pageTitle }}</h1>
             <p>{{ $subTitle }}</p>
         </div>
-        <a href="{{ route('admin.films.create') }}" class="btn btn-primary pull-right">Add Film</a>
+        <a href="{{ route('admin.attributes.create') }}" class="btn btn-primary pull-right">Add Attribute</a>
     </div>
     @include('admin.partials.flash')
     <div class="row">
@@ -16,40 +16,38 @@
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
-                            <th> # </th>
-                            <th> SKU </th>
+                            <th> Code </th>
                             <th> Name </th>
-                            <th class="text-center"> Brand </th>
-                            <th class="text-center"> Genres </th>
-                            <th class="text-center"> Price </th>
-                            <th class="text-center"> Status </th>
+                            <th class="text-center"> Frontend Type </th>
+                            <th class="text-center"> Filterable </th>
+                            <th class="text-center"> Required </th>
                             <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($films as $film)
+                            @foreach($attributes as $attribute)
                                 <tr>
-                                    <td>{{ $film->id }}</td>
-                                    <td>{{ $film->sku }}</td>
-                                    <td>{{ $film->name }}</td>
-                                    <td>{{ $film->brand->name }}</td>
-                                    <td>
-                                        @foreach($film->genres as $genre)
-                                            <span class="badge badge-info">{{ $genre->name }}</span>
-                                        @endforeach
-                                    </td>
-                                    <td>{{ config('settings.currency_symbol') }}{{ $film->price }}</td>
+                                    <td>{{ $attribute->code }}</td>
+                                    <td>{{ $attribute->name }}</td>
+                                    <td>{{ $attribute->frontend_type }}</td>
                                     <td class="text-center">
-                                        @if ($product->status == 1)
-                                            <span class="badge badge-success">Active</span>
+                                        @if ($attribute->is_filterable == 1)
+                                            <span class="badge badge-success">Yes</span>
                                         @else
-                                            <span class="badge badge-danger">Not Active</span>
+                                            <span class="badge badge-danger">No</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        @if ($attribute->is_required == 1)
+                                            <span class="badge badge-success">Yes</span>
+                                        @else
+                                            <span class="badge badge-danger">No</span>
                                         @endif
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Second group">
-                                            <a href="{{ route('admin.films.edit', $film->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                            <a href="{{ route('admin.films.edit', $film->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('admin.attributes.edit', $attribute->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('admin.attributes.delete', $attribute->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
