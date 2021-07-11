@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class FilmImage extends Model
 {
-    use HasFactory;
-
     /**
      * @var string
      */
@@ -17,7 +14,7 @@ class FilmImage extends Model
     /**
      * @var array
      */
-    protected $fillable = ['film_id', 'thumbnail', 'full'];
+    protected $fillable = ['film_id', 'full'];
 
     /**
      * @var array

@@ -2,28 +2,66 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Film;
+use TypiCMS\NestableTrait;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Genre extends Model
 {
-    use HasFactory;
+    use NestableTrait;
 
-     /**
+    /**
      * @var string
      */
     protected $table = 'genres';
-/**
-     * The attributes that are mass assignable.
-     *
+
+    /**
      * @var array
      */
     protected $fillable = [
-        'genre_type',
-      
+        'name', 'slug', 'description', 'parent_id', 'featured', 'menu', 'image'
     ];
 
-    public function film(){
-        return $this->hasMany(Film::class, 'genre_id','id');
-      }
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'parent_id' =>  'integer',
+        'featured'  =>  'boolean',
+        'menu'      =>  'boolean'
+    ];
+
+    /**
+     * @param $value
+     */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function children()
+    {
+        return $this->hasMany(Genre::class, 'parent_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parent()
+    {
+        return $this->belongsTo(Genre::class, 'parent_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function films()
+    {
+        return $this->belongsToMany(Film::class, 'film_genres', 'genre_id', 'film_id');
+    }
 }

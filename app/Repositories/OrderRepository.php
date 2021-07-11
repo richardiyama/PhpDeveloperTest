@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Cart;
 use App\Models\Order;
-use App\Models\Product;
+use App\Models\Film;
 use App\Models\OrderItem;
 use App\Contracts\OrderContract;
 
@@ -44,10 +44,10 @@ class OrderRepository extends BaseRepository implements OrderContract
             {
                 // A better way will be to bring the product id with the cart items
                 // you can explore the package documentation to send product id with the cart
-                $product = Product::where('name', $item->name)->first();
+                $film = Film::where('name', $item->name)->first();
 
                 $orderItem = new OrderItem([
-                    'product_id'    =>  $product->id,
+                    'film_id'    =>  $film->id,
                     'quantity'      =>  $item->quantity,
                     'price'         =>  $item->getPriceSum()
                 ]);
