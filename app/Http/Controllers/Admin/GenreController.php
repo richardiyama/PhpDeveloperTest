@@ -31,7 +31,7 @@ class GenreController extends BaseController
      */
     public function index()
     {
-        $genres = $this->genreRepository->genres();
+        $genres = $this->genreRepository->listGenres();
 
         $this->setPageTitle('Genres', 'List of all genres');
         return view('admin.genres.index', compact('genres'));

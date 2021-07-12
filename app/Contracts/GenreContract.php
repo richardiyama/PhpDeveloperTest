@@ -49,5 +49,5 @@ interface GenreContract
      * @param $slug
      * @return mixed
      */
-    public function findGenreBySlug($slug);
+    public function findBySlug($slug);
 }

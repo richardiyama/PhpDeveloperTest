@@ -12,7 +12,8 @@ Route::group(['prefix'  =>  'admin'], function () {
             return view('admin.dashboard.index');
         })->name('admin.dashboard');
 
-     
+        Route::get('/settings', 'Admin\SettingController@index')->name('admin.settings');
+        Route::post('/settings', 'Admin\SettingController@update')->name('admin.settings.update');
 
         Route::group(['prefix'  =>   'genres'], function() {
 
@@ -68,8 +69,8 @@ Route::group(['prefix'  =>  'admin'], function () {
         });
 
         Route::group(['prefix' => 'orders'], function () {
-           Route::get('/', 'OrderController@index')->name('admin.orders.index');
-           Route::get('/{order}/show', 'OrderController@show')->name('admin.orders.show');
+           Route::get('/', 'Admin\OrderController@index')->name('admin.orders.index');
+           Route::get('/{order}/show', 'Admin\OrderController@show')->name('admin.orders.show');
 
            Route::get('attributes/load', 'Admin\FilmAttributeController@loadAttributes');
            Route::post('attributes', 'Admin\FilmAttributeController@productAttributes');

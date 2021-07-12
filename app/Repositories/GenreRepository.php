@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Genre;
-use App\Traits\UploadAble;
+use App\Traits\Upload;
 use Illuminate\Http\UploadedFile;
 use App\Contracts\GenreContract;
 use Illuminate\Database\QueryException;
@@ -17,7 +17,7 @@ use Doctrine\Instantiator\Exception\InvalidArgumentException;
  */
 class GenreRepository extends BaseRepository implements GenreContract
 {
-    use UploadAble;
+    use Upload;
 
     /**
      * Genre Repository constructor.

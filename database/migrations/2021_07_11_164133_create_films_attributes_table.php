@@ -15,10 +15,8 @@ class CreateFilmsAttributesTable extends Migration
     {
         Schema::create('films_attributes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('attribute_value_id');
-            $table->foreign('attribute_value_id')->references('id')->on('attribute_values');
-            $table->unsignedInteger('film_attribute_id');
-            $table->foreign('film_attribute_id')->references('id')->on('film_attributes');
+            $table->foreignId('attribute_id')->constrained()->onDelete('cascade');
+            $table->foreignId('film_id')->constrained()->onDelete('cascade');
         });
     }
 

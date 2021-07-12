@@ -14,7 +14,7 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.films.index' ? 'active' : '' }}" href="{{ route('admin.products.index') }}">
+            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.films.index' ? 'active' : '' }}" href="{{ route('admin.films.index') }}">
                 <i class="app-menu__icon fa fa-shopping-bag"></i>
                 <span class="app-menu__label">Films</span>
             </a>
@@ -26,7 +26,7 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.genres.index' ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
+            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.genres.index' ? 'active' : '' }}" href="{{ route('admin.genres.index') }}">
                 <i class="app-menu__icon fa fa-tags"></i>
                 <span class="app-menu__label">Genres</span>
             </a>

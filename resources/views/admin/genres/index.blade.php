@@ -6,7 +6,7 @@
             <h1><i class="fa fa-tags"></i> {{ $pageTitle }}</h1>
             <p>{{ $subTitle }}</p>
         </div>
-        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary pull-right">Add Category</a>
+        <a href="{{ route('admin.genres.create') }}" class="btn btn-primary pull-right">Add Genre</a>
     </div>
     @include('admin.partials.flash')
     <div class="row">
@@ -27,34 +27,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($categories as $category)
+                            @foreach($genres as $genre)
                                 @if ($category->id != 1)
                                     <tr>
-                                        <td>{{ $category->id }}</td>
-                                        <td>{{ $category->name }}</td>
-                                        <td>{{ $category->slug }}</td>
-                                        <td>{{ $category->parent->name }}</td>
+                                        <td>{{ $genre->id }}</td>
+                                        <td>{{ $genre->name }}</td>
+                                        <td>{{ $genre->slug }}</td>
+                                        <td>{{ $genre->parent->name }}</td>
                                         <td class="text-center">
-                                            @if ($category->featured == 1)
+                                            @if ($genre->featured == 1)
                                                 <span class="badge badge-success">Yes</span>
                                             @else
                                                 <span class="badge badge-danger">No</span>
                                             @endif
                                         </td>
                                         <td class="text-center">
-                                            @if ($category->menu == 1)
+                                            @if ($genre->menu == 1)
                                                 <span class="badge badge-success">Yes</span>
                                             @else
                                                 <span class="badge badge-danger">No</span>
                                             @endif
                                         </td>
                                         <td class="text-center">
-                                            {{ $category->order }}
+                                            {{ $genre->order }}
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group" aria-label="Second group">
-                                                <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                                <a href="{{ route('admin.categories.delete', $category->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                                <a href="{{ route('admin.genres.edit', $genre->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('admin.genres.delete', $genre->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>

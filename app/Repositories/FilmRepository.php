@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Film;
-use App\Traits\UploadAble;
+use App\Traits\Upload;
 use Illuminate\Http\UploadedFile;
 use App\Contracts\FilmContract;
 use Illuminate\Database\QueryException;
@@ -17,7 +17,7 @@ use Doctrine\Instantiator\Exception\InvalidArgumentException;
  */
 class FilmRepository extends BaseRepository implements FilmContract
 {
-    use UploadAble;
+    use Upload;
 
     /**
      * FilmRepository constructor.

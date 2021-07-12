@@ -15,10 +15,13 @@ class CreateFilmGenresTable extends Migration
     {
         Schema::create('film_genres', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('genre_id')->unsigned()->index();
-            $table->foreign('genre_id')->references('id')->on('genres');
-            $table->integer('film_id')->unsigned()->index();
-            $table->foreign('film_id')->references('id')->on('films');
+            $table->foreignId('genre_id')
+          ->constrained()
+          ->onDelete('cascade');
+
+          $table->foreignId('film_id')
+          ->constrained()
+          ->onDelete('cascade');
         });
     }
 
